@@ -1,4 +1,4 @@
-package lab0;
+ package lab0;
 
 public class RobotInstructions  {
 
@@ -27,12 +27,13 @@ public class RobotInstructions  {
 		 * You will add instructions at the end of the code to cause the robot to move
 		 * as you desire.
 		 */
-		robot.forward(10);
+		robot.forward(-30);
 		robot.turnRight(90);
-		robot.forward(10);
+		robot.forward(300);
 		robot.turnRight(90);
-		robot.forward(40);
+		robot.forward(70);
 		robot.turnRight(90);
+		robot.forward(30);
 	}
 
 }
