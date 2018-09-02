@@ -7,11 +7,11 @@ public class Heads {
 	public static void main(String[] args) {
 
 		// what are the concepts?
-		int numHeads = 0;
+		
 		int numFlips = 0;
 
 		// now flip a coin until we see 10 heads
-		while (numHeads != 10) {
+		for (int numHeads = 0; numHeads != 100;) {
 			boolean isHeads = Math.random() < 0.5;
 			if (isHeads) {
 				numHeads = numHeads + 1;
