@@ -19,10 +19,10 @@ public class Max {
 		//   execution to print the larger of the two values.
 		//
 		if (x>y) {
-			System.out.println(x+" is larger.");
+			System.out.println(x+" is larger!");
 		}
 		else {
-			System.out.println(y+" is larger.");
+			System.out.println(y+" is larger!");
 		}
 		//
 		// Run this program testing on various inputs for
