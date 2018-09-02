@@ -9,10 +9,12 @@ public class BadSwap {
 		
 		int x = ap.nextInt("Enter x");
 		int y = ap.nextInt("Enter y");
+		int z = 0;
 		
 		if (x > y) {
-			x = y;     // Bad
-			y = x;     // swap!!
+			z = y;     // Bad
+			y = x;
+			x = z;     // swap!!
 		}
 		
 		System.out.println("x and y are now"
@@ -26,7 +28,8 @@ public class BadSwap {
 		//
 		// Your answer:
 		//
-		//
+		// Because when x>y, like 5>3, the code "y=x"-> x=y=3. Then the code "y=x" means nothing!
+		// So there need another integer to put the value of x when we swap them.
 		//
 		//
 		//
