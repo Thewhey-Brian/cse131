@@ -11,14 +11,26 @@ public class RandomAverages {
 		//     thus far.
 		//
 		// Your code goes below here.
-		
+		int i=1;
+		double a=0, b=0;
+		while(i<1001) {
+			double k = Math.random();
+			a = k+a;
+			b = a/i;
+			if(i%100==0) {
+				System.out.println("The average is: "+b);
+			}
+			i = i+1;
+		}
 		
 		
 		//
 		//  Some questions:
 		//    1) How does the average change as your loop progresses?
+		//        Became closer to 0.5.
 		//    2) Can you write code in your loop that prints out the average only
 		//         every 100 iterations, instead of each iteration?
+		//        
 		//
 		
 	}
