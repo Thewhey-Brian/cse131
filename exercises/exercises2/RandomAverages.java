@@ -30,7 +30,7 @@ public class RandomAverages {
 		//        Became closer to 0.5.
 		//    2) Can you write code in your loop that prints out the average only
 		//         every 100 iterations, instead of each iteration?
-		//        
+		//        Right up there!
 		//
 		
 	}
