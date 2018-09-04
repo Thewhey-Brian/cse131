@@ -23,11 +23,10 @@ public class Grade {
 		System.out.println(n0+":");
 		System.out.println("Total score:"+n9);
 		System.out.println("Final grade for this score:"+n10);
-		System.out.println("Final grade has a......");
+		System.out.println("Final grade has a...");
 		System.out.println(" Plus: "+n11);
 		System.out.println(" Minus: "+n12);
 		
-
 	}
 
 }
