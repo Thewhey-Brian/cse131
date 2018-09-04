@@ -10,7 +10,11 @@ public class CopyArrayAndPigLatin {
 		//  So we cannot just do the following (too much to type):
 		//     String[] copy = { names[0], names[1], names[2] };
 		//
-		
+		String[] copy = new String[100];
+		for (int i=0; i<names.length; ++i) {
+			copy[i] = names[i] + "ay";
+			System.out.print(copy[i]+"  ");
+		}
 		
 		// 
 		// Follow the instructions on the web page to check
@@ -18,6 +22,7 @@ public class CopyArrayAndPigLatin {
 		// copied strings in "Pig Latin".  Do this by iteration without
 		// assuming the length or contents of the names array.
 		//
+		
 		
 	}
 
