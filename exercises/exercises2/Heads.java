@@ -7,11 +7,15 @@ public class Heads {
 	public static void main(String[] args) {
 
 		// what are the concepts?
-		int numHeads = 0;
+		
+		ArgsProcessor ap = new ArgsProcessor(args);
+		
+		int n = ap.nextInt("How many times do you want to play?");
+		int sunNumFlips = 0;
+		for (int i = 0; i<n; ++i) {
 		int numFlips = 0;
-
 		// now flip a coin until we see 10 heads
-		while (numHeads != 10) {
+		for (int numHeads = 0; numHeads != 10;) {
 			boolean isHeads = Math.random() < 0.5;
 			if (isHeads) {
 				numHeads = numHeads + 1;
@@ -20,9 +24,9 @@ public class Heads {
 
 		}
 		// here, numHeads should be 10
-		
-		System.out.println("Number of flips was " + numFlips);
+		sunNumFlips = sunNumFlips + numFlips;
 
 	}
-
+	System.out.println("Number of avreage flips was " + (1.0*sunNumFlips/n));
+	}
 }

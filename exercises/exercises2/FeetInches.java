@@ -1,8 +1,36 @@
 package exercises2;
 
+import cse131.ArgsProcessor;
+
 public class FeetInches {
 
 	public static void main(String[] args) {
+		
+		ArgsProcessor ap = new ArgsProcessor(args);
+		int inch = ap.nextInt("How many inches?");
+		int feet = inch/12;
+		int inch0 = inch%12;
+		if (feet>1)
+		{
+			if(inch0>1)
+			{
+				System.out.println(inch+"inches will produce: "+feet+" feet and "+inch0+" inches");
+			}
+			else {
+				System.out.println(inch+"inches will produce: "+feet+" feet and "+inch0+" inch");
+			}
+		}
+		
+		else{
+			if(inch0>1)
+			{
+				System.out.println(inch+" inches will produce: "+feet+" foot and "+inch0+" inches");
+			}
+			else {
+				System.out.println(inch+" inches will produce: "+feet+" foot and "+inch0+" inch");
+			}
+		}
+		
 		//
 		// Prompt the user for a number of inches
 		//

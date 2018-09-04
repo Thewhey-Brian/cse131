@@ -3,6 +3,16 @@ package exercises2;
 public class CoinFlip {
 
 	public static void main(String[] args) {
+		
+		double coinFlip = Math.random();
+		if (coinFlip>0.5)
+		{
+			System.out.println("Head!");
+		}
+		else {
+			System.out.println("Tail!");
+		}
+		
 		//
 		// Use the random number generator
 		//    (Math.random())
