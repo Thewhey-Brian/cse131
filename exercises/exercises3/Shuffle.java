@@ -9,7 +9,7 @@ public class Shuffle {
 
 		// print out original array
 		for (int i=0; i < original.length; ++i) {
-			System.out.println("Original at " + i + " is " + original[i]);
+		//	System.out.println("Original at " + i + " is " + original[i]);
 		}
 
 		//
@@ -19,6 +19,16 @@ public class Shuffle {
 		// shuffled array contains the same strings, but in a randomized
 		// order.
 		//
+		
+		String[] shuffled = new String[original.length];
+		for (int i=shuffled.length-1; i>=0; --i) {
+			int c = (int) (Math.random()*i);
+			shuffled[i] = original[c];
+			System.out.println("shuffled at " + i + " is " + shuffled[i]);
+			for (int j=c; j< shuffled.length-1; ++j) {
+				original[j]=original[j+1];
+			}
+		}
 
 	}
 	
