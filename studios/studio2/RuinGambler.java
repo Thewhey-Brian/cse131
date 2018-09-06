@@ -21,7 +21,7 @@ public class RuinGambler {
 		}
 	    int n=0;
 		for(int i=1; i<totalP+1; ++i) {
-			System.out.print("Simulation "+i+": ");
+			System.out.print(" Simulation "+i+": ");
 			int startA1 = startA;
 			int j = 1;
 			for(j=1; startA1>0&&startA1<winA; ++j) {
