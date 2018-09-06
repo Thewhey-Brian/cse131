@@ -14,7 +14,11 @@ public class RuinGambler {
 		double lossC = 1-winC;
 		double ruin = 0;
 		if(lossC!=winC) {
-			ruin = Math.pow(winC/lossC, startA)-(Math.pow(winC/lossC, winA)/(1-Math.pow(winC/lossC, winA)));
+			double a = Math.pow(lossC/winC, startA);
+			double b = Math.pow(lossC/winC, winA);
+			double c = 1-(Math.pow(lossC/winC, winA));
+			ruin = (a-b)/c;
+			System.out.println(ruin);
 		}
 		else {
 			ruin = 1-startA/winA;
