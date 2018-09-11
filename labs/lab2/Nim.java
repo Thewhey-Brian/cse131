@@ -16,7 +16,6 @@ public class Nim {
 			System.out.println("Humen starts");
 			for (int i=0; sticks>0; i=i+2) {
 				if(sticks<2) {
-					i = i+1;
 					System.out.print("Round "+i+", ");
 					System.out.print(sticks+" sticks at starts, ");
 					removeH = 1;
@@ -29,7 +28,7 @@ public class Nim {
 				
 				else {
 					removeH = ap.nextInt("How many sticks do you want to remove?");
-					for(;removeH>2;) {
+					for(;removeH>2||removeH==0;) {
 						removeH = ap.nextInt("How many sticks do you want to remove?");
 					}
 					System.out.print("Round "+i+", ");
@@ -43,9 +42,10 @@ public class Nim {
 					
 					if(sticks!=0) {
 					if(sticks==1) {
-						k = i+1;
+						k=i+1;
 						System.out.print("Round "+k+", ");
 						System.out.print(sticks+" sticks at starts, ");
+						removeC = 1;
 						System.out.print("Computer took "+removeC+", ");
 						sticks = sticks-removeC;
 						System.out.println("so "+sticks+" remain");
@@ -115,7 +115,7 @@ public class Nim {
 					
 					if(sticks>0) {
 					removeH = ap.nextInt("How many sticks do you want to remove?");
-					for(;removeH>2;) {
+					for(;removeH>2||removeH==0;) {
 						removeH = ap.nextInt("How many sticks do you want to remove?");
 					}
 					k = i+1;
