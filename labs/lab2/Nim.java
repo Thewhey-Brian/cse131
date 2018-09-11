@@ -126,6 +126,7 @@ public class Nim {
 					System.out.println("so "+sticks+" remain");
 					if(sticks==0) {
 						System.out.println("Human wins!");
+						
 					}
 					}
 
