@@ -30,7 +30,7 @@ public class Filters {
 	// This method takes the color of each pixel and creates a new color without any green.  Returns an array of integers [r, g ,b].
 	// USED IN: example_purplish
 	public static Color purplish(Color c) {
-		return Color.black;  // FIXME
+		return Color.blue;  // FIXME
 	}
 
 	// Now that you've seen the examples, complete the following methods.
@@ -44,26 +44,25 @@ public class Filters {
 	 *the first source image to the target panel.  
 	 *(Hint: This is a very simple method.)**/
 	public static int copy(int pixelComponent) {
-		return 0;  // FIXME
+		return pixelComponent;  // FIXME
 	}
-
 	//This method averages the color components of two pixels.
 	// USED IN: composite
 	public static int composite(int a, int b) {
-		return 0;  // FIXME
+		return  a+b;  // FIXME
 	}
 
 	//This method returns the negative of a pixel by inverting its color components.
 	// USED IN: negative
 	public static int negative(int a) {
-		return 0;  // FIXME
+		return -a;  // FIXME
 	}
 
 	//This method reduces the number of possible values for a given color component
 	//from 256 to 2, by returning either 0 or 255 based on the original value.
 	// USED IN: posterize
 	public static int posterize(int a) {
-		return 0;   // FIXME
+		return a = ;   // FIXME
 	}
 
 	//This method returns a color that is brighter than the original color.
