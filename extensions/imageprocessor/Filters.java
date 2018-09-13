@@ -62,7 +62,7 @@ public class Filters {
 	//from 256 to 2, by returning either 0 or 255 based on the original value.
 	// USED IN: posterize
 	public static int posterize(int a) {
-		return a = ;   // FIXME
+		return a/128 ;  // FIXME
 	}
 
 	//This method returns a color that is brighter than the original color.
