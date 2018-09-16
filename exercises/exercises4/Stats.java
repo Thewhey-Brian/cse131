@@ -30,6 +30,7 @@ public class Stats {
 		System.out.println("Max: "+max);
 		System.out.println("Min: "+min);
 
+		
 
 		//
 		//  Read in the data from the opened file, computing the
