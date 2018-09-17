@@ -15,6 +15,17 @@ public class MouseFollower {
 			//
 			// Render one frame of your animation below here
 			//
+			StdDraw.setPenColor(Color.green);
+			StdDraw.setPenRadius(0.05);
+			while(true) {
+				StdDraw.clear();
+				double x = StdDraw.mouseX();
+				double y = StdDraw.mouseY();
+				StdDraw.pause(100);
+				StdDraw.point(x, y);
+				StdDraw.pause(100);
+				StdDraw.show(10);
+			}
 
 			
 			//  
@@ -22,7 +33,7 @@ public class MouseFollower {
 			//
 			// Stdraw.show(..) achieves double buffering and
 			//   avoids the tight spinning loop
-			StdDraw.show(10);
+			
 		}
 
 	}
