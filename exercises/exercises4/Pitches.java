@@ -9,13 +9,13 @@ public class Pitches {
 		//    1 would be Bb, just above A
 		//   -1 would be Ab, just below A
 		ArgsProcessor ap = new ArgsProcessor(args);
-		int pitch = ap.nextInt("What pitch?");
-		int p7 = pitch+7;
-		double frequency = 440.0*Math.pow(2, pitch/12.0);
-		double f7 = 440.0*Math.pow(2, p7/12.0);
-		System.out.println("Pitch "+pitch+"gets the frequency "+frequency);
-		System.out.println("Pitch7 "+p7+"gets the frequency7 "+f7);
-		double ratio = f7/frequency;
+		int pitch = ap.nextInt("What pitch1?");
+		int pitch2 = ap.nextInt("What pitch2?");
+		double frequence1 = 440.0*Math.pow(2, pitch/12.0);
+		double frequence2 = 440.0*Math.pow(2, pitch2/12.0);
+		System.out.println("Pitch1 "+pitch+"gets the frequency1 "+frequence1);
+		System.out.println("Pitch2 "+pitch2+"gets the frequency2 "+frequence2);
+		double ratio = frequence2/frequence1;
 		System.out.println("The ratio is "+ratio);
 		
 
