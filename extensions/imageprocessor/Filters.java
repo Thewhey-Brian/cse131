@@ -69,20 +69,35 @@ public class Filters {
 	// USED IN: brighter
 	//FIX ME
 	public static Color brighter(Color c) {
-		return Color.black;  // FIXME
+		return c.brighter();  // FIXME
 	}
 
 	//This method returns a color that is some shade of gray, by making a new
 	//color having equal RGB components. returns an array of integers [r, g ,b].
 	// USED IN: grayscale
 	public static Color grayscale(Color c) {
-		return Color.black;  // FIXME
+		int red   = c.getRed();
+		int green = c.getGreen();
+		int blue  = c.getBlue();
+		int ave = (red+green+blue)/3;
+		red = ave;
+		green = ave;
+		blue = ave;
+		return c;  // FIXME
+		
 	}
 
 	//This method returns either black or white, based on the intensity of the
 	//originally provided color. returns an array of integers [r, g ,b].
 	// USED IN: blackWhite
 	public static Color blackAndWhite(Color c) {
+		int red   = c.getRed();
+		int green = c.getGreen();
+		int blue  = c.getBlue();
+		int ave = (red+green+blue)/3;
+		for(; ave>128; ) {
+			return Color.WHITE;
+		}
 		return Color.black;   // FIXME
 	}
 
