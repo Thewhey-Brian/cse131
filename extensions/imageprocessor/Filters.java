@@ -30,7 +30,10 @@ public class Filters {
 	// This method takes the color of each pixel and creates a new color without any green.  Returns an array of integers [r, g ,b].
 	// USED IN: example_purplish
 	public static Color purplish(Color c) {
-		return Color.blue;  // FIXME
+		int red   = c.getRed();
+		int green = c.getGreen();
+		int blue  = c.getBlue();
+		return new Color(red, 0, blue);  // FIXME
 	}
 
 	// Now that you've seen the examples, complete the following methods.
@@ -49,20 +52,20 @@ public class Filters {
 	//This method averages the color components of two pixels.
 	// USED IN: composite
 	public static int composite(int a, int b) {
-		return  a+b;  // FIXME
+		return  (a+b)/2;  // FIXME
 	}
 
 	//This method returns the negative of a pixel by inverting its color components.
 	// USED IN: negative
 	public static int negative(int a) {
-		return -a;  // FIXME
+		return a = 255-a;  // FIXME
 	}
 
 	//This method reduces the number of possible values for a given color component
 	//from 256 to 2, by returning either 0 or 255 based on the original value.
 	// USED IN: posterize
 	public static int posterize(int a) {
-		return a/128 ;  // FIXME
+		return a = (a/128)*255 ;  // FIXME
 	}
 
 	//This method returns a color that is brighter than the original color.
@@ -83,7 +86,7 @@ public class Filters {
 		red = ave;
 		green = ave;
 		blue = ave;
-		return c;  // FIXME
+		return new Color(ave, ave, ave);  // FIXME
 		
 	}
 
@@ -105,8 +108,31 @@ public class Filters {
 	//pixel in the same location from the two source images.
 	// USED IN: combineBrighter
 	public static Color combineBrighter(Color c1, Color c2) {
-		return Color.black;  // FIXME
-
+		int r1, g1, b1;
+		r1 = c1.getRed();  // FIXME
+		g1 = c1.getGreen();
+		b1 = c1.getBlue();
+		int sum1 = r1+g1+b1;
+		int r2, g2, b2;
+		r2 = c2.getRed();  // FIXME
+		g2 = c2.getGreen();
+		b2 = c2.getBlue();
+		int sum2 = r2+g2+b2;
+		for (;sum1>sum2;) {
+			Color result = new Color(r1, g1, b1);
+			return result;
+		}
+		for (;sum2>sum1;) {
+			Color result = new Color(r2, g2, b2);
+			return result;
+		}
+		return c1;
+		
+		//int rf = (sum1/sum2)*r1+(sum2/sum1)*r2;
+		//int gf = (sum1/sum2)*g1+(sum2/sum1)*g2;
+		//int bf = (sum1/sum2)*b1+(sum2/sum1)*b2;
+		//Color result = new Color(rf, gf, bf);
+		//return result;
 
 	}
 	/**This is the beginning of another extension*
