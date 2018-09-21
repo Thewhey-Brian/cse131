@@ -150,19 +150,45 @@ public class Filters {
 	 * @return
 	 */
 	public static Color bgSubtract(Color source1Color, Color source2Color, int tolerance) {
-		return Color.black;
+		int r1, g1, b1;
+		r1 = source1Color.getRed();  // FIXME
+		g1 = source1Color.getGreen();
+		b1 = source1Color.getBlue();
+		int sum1 = r1+g1+b1;
+		int r2, g2, b2;
+		r2 = source2Color.getRed();  // FIXME
+		g2 = source2Color.getGreen();
+		b2 = source2Color.getBlue();
+		int sum2 = r2+g2+b2;
+		int a = Math.max(sum1, sum2)-Math.min(sum1, sum2);
+		if (a<=tolerance) {
+			return Color.blue;
+		}
+		else {
+			return source1Color;
+		}
 
 	}
+	
 
-	private static Random r = new Random();
-	public static Color genRandomColor() {
-		return new Color(r.nextInt(256), r.nextInt(256), r.nextInt(256));		
-	}
+	//private static Random r = new Random();
+	//public static Color genRandomColor() {
+	//	return new Color(r.nextInt(256), r.nextInt(256), r.nextInt(256));		
+	//}
 	//This method performs background replacement by returning the color from the
 	//second image if the color from the first image is blue; otherwise returns
 	//the color from the first image.
 	public static Color bgReplace(Color s1Color, Color s2Color) {
-		return genRandomColor();
+		int r1, g1, b1;
+		r1 = s1Color.getRed();  // FIXME
+		g1 = s1Color.getGreen();
+		b1 = s1Color.getBlue();
+		if(b1==255) {
+			return s2Color;
+		}
+		else {
+			return s1Color;
+		}
 	}
 
 }
