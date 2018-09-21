@@ -171,10 +171,10 @@ public class Filters {
 	}
 	
 
-	//private static Random r = new Random();
-	//public static Color genRandomColor() {
-	//	return new Color(r.nextInt(256), r.nextInt(256), r.nextInt(256));		
-	//}
+	private static Random r = new Random();
+	public static Color genRandomColor() {
+		return new Color(r.nextInt(256), r.nextInt(256), r.nextInt(256));		
+	}
 	//This method performs background replacement by returning the color from the
 	//second image if the color from the first image is blue; otherwise returns
 	//the color from the first image.
