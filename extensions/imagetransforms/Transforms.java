@@ -33,16 +33,49 @@ public class Transforms {
 	}
 	
 	public static void flipVert(Picture source, Picture target) {
-		// FIXME
+		for(int y = 0; y < source.height(); y++) {
+			for(int x = 0; x < source.width(); x++) {
+				int othery = source.height() - 1 - y;  
+				Color c = source.get(x, othery);    
+				target.set(x, y, c); // FIXME
+			}
+		}
+		
 	}
 	
 	
 	public static void flipHorizLeftHalf(Picture source, Picture target) {
-		// FIXME
+		for(int y = 0; y < source.height(); y++) {
+			for(int x = source.width()/2; x < source.width(); x++) {
+				int otherx = source.width() - x;  
+				Color c = source.get(otherx, y);    
+				target.set(x, y, c); // FIXME
+			}
+		}// FIXME
+		for(int y = 0; y < source.height(); y++) {
+			for(int x = 0; x < source.width()/2; x++) {
+				int otherx = source.width() - x;  
+				Color c = source.get(x, y);    
+				target.set(x, y, c); // FIXME
+			}
+		}
 	}
 	
 	public static void flipVertBotHalf(Picture source, Picture target) {
-		// FIXME
+		for(int x = 0; x < source.width(); x++) {
+			for(int y = source.height()/2; y < source.height(); y++) {
+				int othery = source.height() - y;  
+				Color c = source.get(x, othery);    
+				target.set(x, y, c); // FIXME
+			}
+		}// FIXME
+		for(int x = 0; x < source.width(); x++) {
+			for(int y = 0; y < source.height()/2; y++) {
+				//int otherx = source.width() - x;  
+				Color c = source.get(x, y);    
+				target.set(x, y, c); // FIXME
+			}
+		}// FIXME
 	}
 	
 	public static void gradient(Picture target) {
