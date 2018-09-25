@@ -79,6 +79,19 @@ public class Transforms {
 	}
 	
 	public static void gradient(Picture target) {
+		int x = 0;
+		int y = 0;
+		
+		for(x = 0; x<target.width(); ++x) {		
+		
+			for(y = 0; y<target.height(); ++y) {	
+				double g = y*(255/(double)target.height());
+				double r = x*(255/(double)target.width());
+				Color c  = new Color((int)r, (int)g, 128);
+				target.set(x, y, c);
+			}
+			
+		}
 		// FIXME
 				
 	}

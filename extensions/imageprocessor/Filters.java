@@ -187,7 +187,7 @@ public class Filters {
 		r2 = s2Color.getRed();  // FIXME
 		g2 = s2Color.getGreen();
 		b2 = s2Color.getBlue();
-		if(b1==255) {
+		if(b1==255 && r1 == 0 && g1 == 0) {
 			Color result = new Color(r2, g2, b2);
 			return result;
 		}
