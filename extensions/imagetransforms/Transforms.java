@@ -87,7 +87,7 @@ public class Transforms {
 			for(y = 0; y<target.height(); ++y) {	
 				double g = y*(255/(double)target.height());
 				double r = x*(255/(double)target.width());
-				Color c  = new Color((int)r, (int)g, 128);
+				Color c = new Color((int)r, (int)g, 128);
 				target.set(x, y, c);
 			}
 			
