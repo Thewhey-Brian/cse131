@@ -183,11 +183,17 @@ public class Filters {
 		r1 = s1Color.getRed();  // FIXME
 		g1 = s1Color.getGreen();
 		b1 = s1Color.getBlue();
+		int r2, g2, b2;
+		r2 = s2Color.getRed();  // FIXME
+		g2 = s2Color.getGreen();
+		b2 = s2Color.getBlue();
 		if(b1==255) {
-			return s2Color;
+			Color result = new Color(r2, g2, b2);
+			return result;
 		}
 		else {
-			return s1Color;
+			Color result = new Color(r1, g1, b1);
+			return result;
 		}
 	}
 

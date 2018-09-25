@@ -11,8 +11,8 @@ public class expectedvalue {
 		int value = (int) ((p*190000+(1-p)*5000)/1);
 		int salary = (int) (110000+Math.random()*50000);
 		boolean c = value>salary;
-		int valueEU = (int)Math.pow((p*190000+(1-p)*5000), 1/3);
-		int salaryEU = (int)Math.sqrt(110000+Math.random()*50000);
+		int valueEU = (int)Math.sqrt((p*190000+(1-p)*5000))*3;
+		int salaryEU = (int)Math.sqrt(110000+Math.random()*50000)*2;
 		System.out.println("Gamer(EU): "+valueEU);
 		System.out.println("Programer(EU): "+salaryEU);
 		boolean d = valueEU>salaryEU;
