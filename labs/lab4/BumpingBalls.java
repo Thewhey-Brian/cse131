@@ -11,70 +11,90 @@ public class BumpingBalls {
 		ArgsProcessor ap = new ArgsProcessor(args);
 		int n = ap.nextInt("How many balls do you want?");
 		int i = ap.nextInt("The number of iterations?");
-		int [] ball = new int [n];
+		int c = 0;
+		double q1 = 0.0;
+		double q2 = 0.0;
 		double [] x = new double [n];
 		double [] y = new double [n];
 		double [] vx = new double [n];
 		double [] vy = new double [n];
 		double a = 0.0;
 		double b = 0.0;
-		double d = 0.0;
-		double c = 0.0;
 		for(int k=0; k<n; ++k) {
 			int r = (int) (Math.random()*10);
 			int rr = (int) (Math.random()*10);
-			vx[k] = Math.random()*Math.pow((-1), r)*0.03;
-			vy[k] = Math.random()*Math.pow((-1), rr)*0.03;
-		}
-		for(int k=0; k<n; ++k) {
+			vx[k] = Math.random()*Math.pow((-1), r)*0.012;
+			vy[k] = Math.random()*Math.pow((-1), rr)*0.012;
 			x[k] = Math.random();
 			y[k] = Math.random();
 		}
 		for(int p = 0; p<n; ++p) {
-			a = x[p];
-			b = y[p];
-			StdDraw.setPenColor(Color.ORANGE);
-			StdDraw.setPenRadius(0.05);
-			StdDraw.point(a, b);
-			StdDraw.pause(10);
-			StdDraw.show(10);
+			for(int l = 0; l<n; ++l) {
+				q1 = x[p]-x[l];
+				q2 = y[p]-y[l];
+				double qx = Math.abs(q1);
+				double qy = Math.abs(q2);
+				double q = Math.sqrt(qx*qx+qy*qy);
+				if((q<=0.082)&&q!=0) {
+					x[l] = Math.random();
+					y[l] = Math.random();
+				}
+			}
 		}
-		while((a>=0&&a<1)||(b<1&&b>=0)) {
-			StdDraw.clear();
+		//for(int k=0; k<n; ++k) {
+		//}
+		//for(int p = 0; p<n; ++p) {
+		//	a = x[p];
+		//	b = y[p];
+		//	StdDraw.setPenColor(Color.BLACK);
+		//	StdDraw.setPenRadius(0.01);
+		//	StdDraw.circle(a, b, 0.025);
+		//	StdDraw.setPenColor(Color.ORANGE);
+		//	StdDraw.setPenRadius(0.05);
+		//	StdDraw.point(a, b);
+		//	StdDraw.show(10);
+		//}
+		while(true) {
 			for(int k=0; k<n; ++k) {
-				if ((Math.abs(x[k]) >= 1)||(x[k]<=0)) {
+				if ((Math.abs(x[k]+vx[k]) >= 1.0)||(x[k]+vx[k]<=0)) {
 						vx[k] = -vx[k];
 				} 
-				if ((Math.abs(y[k]) >= 1)||(y[k]<=0)) {
+				if ((Math.abs(y[k]+vy[k]) >= 1.0)||(y[k]+vy[k]<=0)) {
 						vy[k] = -vy[k];
 				} 
-				
-				for(int p = 0; p<n; ++p) {
-					double q1 = 0.0;
-					double q2 = 0.0;
-					for(int l = 0; l<n; ++l) {
-						q1 = x[p]-x[l];
-						q2 = y[p]-y[l];
-						double qx = Math.abs(q1);
-						double qy = Math.abs(q2);
-						double q = Math.sqrt(qx*qx+qy*qy);
-						if((q<=0.1)&&q!=0) {
-							vx[p] = -vx[p];
-							vy[p] = -vy[p];
-						}
+			}//ball+wall
+			
+			for(int p = 0; p<n; ++p) {
+				for(int l = 0; l<n; ++l) {
+					q1 = x[p]-x[l];
+					q2 = y[p]-y[l];
+					double qx = Math.abs(q1);
+					double qy = Math.abs(q2);
+					double q = Math.sqrt(qx*qx+qy*qy);
+					if((q<=0.092)&&q!=0) {
+						vx[l] = -vx[l];
+						vy[l] = -vy[l];
 					}
 				}
-				x[k] = x[k]+vx[k];
-				y[k] = y[k]+vy[k];
-				a = x[k];
-				b = y[k];
+			}//ball+ball
+			
+			StdDraw.clear();
+			for(int t=0; t<n; ++t) {
+				x[t] = x[t]+vx[t];
+				y[t] = y[t]+vy[t];
+				a = x[t];
+				b = y[t];
+				StdDraw.setPenColor(Color.BLACK);
+				StdDraw.setPenRadius(0.02);
+				StdDraw.circle(a, b, 0.04);
 				StdDraw.setPenColor(Color.ORANGE);
-				StdDraw.setPenRadius(0.05);
+				StdDraw.setPenRadius(0.08);
 				StdDraw.point(a, b);
-				StdDraw.show(1);
-			}	
+			}
 			StdDraw.show(100);
-		}
+		}	
+		
+		
 		
 		
 		
