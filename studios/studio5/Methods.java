@@ -19,7 +19,56 @@ public class Methods {
 	 * @return the product of the factors
 	 */
 	public static int mpy(int x, int y) {
-		return 0;  // FIXME
+		int ans = 0;
+		for(int i=0; i<y; ++i) {
+			ans = ans+x;
+		}
+		return ans;  // FIXME
+	}
+	
+	/**
+	 * 
+	 * @param a
+	 * @param b
+	 * @param c
+	 * @return the average of the three factors
+	 */
+	public static double avg3(int a, int b, int c) {
+		double ans = (a + b + c)/3.0;
+		return ans;
+	}
+	
+	public static double sumArray(double[] array) {
+		double sum = 0;
+		for(int i=0; i<array.length; ++i) {
+			sum = sum + array[i];
+		}
+		return sum;
+	}
+	
+	public static double average(double[] array) {
+		double ans = 0;
+		double sum = sumArray(array);
+		ans = sum/array.length;
+		return ans;
+	}
+	
+	public static int absolute(int a) {
+		int ans = 0;
+		if(a>0) {
+			ans = a;
+		}
+		else {
+			ans = -a;
+		}
+		return ans;
+	}
+	
+	public static String pig(String s) {
+		String head = s.substring(0,1);
+		String body = s.substring(1);
+		String ans = body + head + "ay";
+		return ans;
 	}
 
 
