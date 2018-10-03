@@ -38,6 +38,11 @@ public class Methods {
 		return ans;
 	}
 	
+	/**
+	 * 
+	 * @param array
+	 * @return sum
+	 */
 	public static double sumArray(double[] array) {
 		double sum = 0;
 		for(int i=0; i<array.length; ++i) {
@@ -46,6 +51,11 @@ public class Methods {
 		return sum;
 	}
 	
+	/**
+	 * 
+	 * @param array
+	 * @return average
+	 */
 	public static double average(double[] array) {
 		double ans = 0;
 		double sum = sumArray(array);
@@ -53,6 +63,11 @@ public class Methods {
 		return ans;
 	}
 	
+	/**
+	 * 
+	 * @param a
+	 * @return absolute value
+	 */
 	public static int absolute(int a) {
 		int ans = 0;
 		if(a>0) {
@@ -64,6 +79,11 @@ public class Methods {
 		return ans;
 	}
 	
+	/**
+	 * 
+	 * @param s
+	 * @return pig latin
+	 */
 	public static String pig(String s) {
 		String head = s.substring(0,1);
 		String body = s.substring(1);
