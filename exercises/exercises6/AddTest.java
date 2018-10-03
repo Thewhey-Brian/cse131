@@ -12,7 +12,7 @@ public class AddTest {
 		assertEquals(20, Add.add(2, 18));
 		assertEquals(9, Add.add(4, 5));
 		assertEquals(-6, Add.addAny(-2,-4));
-		assertEquals(10, Add.addAny(12, -2));
+		assertEquals(10, Add.addAny(12, -2)); 
 		//
 		// write other test cases here:
 		//
