@@ -22,6 +22,22 @@ public class LinearSearch {
 	 *         array; otherwise -1.
 	 */
 	public static int findFirstIndexIn(String[] array, String key) {
-		throw new NotYetImplementedException("delete this line of code and implement this method.");
+		int ans = array.length;
+		int i = 0;
+		while(i<array.length) {
+			if(Strings.equals(array[i], key)) {
+				ans = i;
+				i = array.length;
+			}
+			else {
+				i = i+1;
+			}
+		}
+		if(ans!=array.length) {
+			return ans;
+		}
+		else {
+			return -1;
+		}
 	}
 }
