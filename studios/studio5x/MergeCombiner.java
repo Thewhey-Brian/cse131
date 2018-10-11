@@ -52,7 +52,7 @@ public class MergeCombiner {
 				c[k] = a[i];
 				k = k+1;
 				i = i+1;
-			}
+			}  
 		}
 		return c;
 	}
