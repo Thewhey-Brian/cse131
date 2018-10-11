@@ -16,8 +16,8 @@ public class eightball {
 		double[] x = new double[3];
 		double[] y = new double[3];
 		String[] p = new String[10];
-		String[] n = new String[10];
-		String[] a = new String[10];
+		String[] n = new String[5];
+		String[] a = new String[5];
 		p[0]="It is certain"; p[1]="It is decidedly so"; p[2]="Without a doubt"; p[3]="Yes definitly"; p[4]="You may rely on it"; p[5]="As I see it, yes"; p[6]="Most likely"; p[7]="Outlook good"; p[8]="Yes"; p[9]="Signs point to yes";
 		n[0]="Don't count on it"; n[1]="My reply is no"; n[2]="My sources say no"; n[3]="Outlook not so good"; n[4]="Very doubtful";
 		a[0]="Reply hazy try again"; a[1]="Ask again later"; a[2]="Better not tell you now"; a[3]="Cannot predict now"; a[4]="Concentrate and ask again"; 
@@ -51,7 +51,7 @@ public class eightball {
 		else {
 				if(v>0.66666) {
 					//negative
-					int num = (int)(Math.random()*100)/10;
+					int num = (int)(Math.random()*100)/20;
 					for(int i=0; i<101; ++i) {
 						d = 3.6*i;
 						StdDraw.clear();
@@ -72,7 +72,7 @@ public class eightball {
 				}
 				else {
 					//try again
-					int num = (int)(Math.random()*100)/10;
+					int num = (int)(Math.random()*100)/20;
 					for(int i=0; i<101; ++i) {
 						d = 3.6*i;
 						StdDraw.clear();
