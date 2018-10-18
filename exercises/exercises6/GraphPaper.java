@@ -16,7 +16,7 @@ public class GraphPaper {
 		// base case, stop when the size is sufficiently small
 		if (size < .05) {
 			return;  // abandon recursion
-		}
+		} 
 		
 		// draw one horizontal and one vertical line to quadrisect
 		//  the square (divide into 4 portions). Your code goes
@@ -29,7 +29,7 @@ public class GraphPaper {
 		// let's pause to accentuate the recursive drama
 		//
 		
-		//StdDraw.pause(500);
+		StdDraw.pause(500);
 		//
 		//
 		// Now recursively consider the
@@ -37,7 +37,7 @@ public class GraphPaper {
 		//   subcases
 		//   Your code for those subcases should go below here:
 		//
-		gp(llx, lly, size/2);
+		gp(llx, lly, size/2); 
 		gp(llx+size/2, lly, size/2);
 		gp(llx, lly+size/2, size/2);
 		gp(llx+size/2, lly+size/2, size/2);
@@ -52,9 +52,9 @@ public class GraphPaper {
 		//   calls below to StdDraw.show
 		//   and that will speed up what you see greatly
 		//
-		 StdDraw.show(10);  // don't show anything
+		// StdDraw.show(10);  // don't show anything
 		gp(0, 0, 1);
-		 StdDraw.show(10);  // until now
+		// StdDraw.show(10);  // until now
 
 	}
 

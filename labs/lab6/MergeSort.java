@@ -88,7 +88,16 @@ public class MergeSort {
 	 *         from [min, maxExclusive).
 	 */
 	public static String[] createSortedArrayInRange(String[] array, int min, int maxExclusive) {
-		throw new NotYetImplementedException("delete this line of code and implement this method.");
+		if(maxExclusive-min==1) {
+			String[] a = new String[1];
+			String[] b = new String[1];
+			a[0] = array[min];
+			b[0] = array[maxExclusive];
+			return mergeCombine(a, b);
+		}
+		else {
+			return mergeCombine(createSortedArrayInRange(array, min, (maxExclusive-min)/2+min), createSortedArrayInRange(array, (maxExclusive-min)/2+min+1, maxExclusive));
+		}		
 	}
 
 	/**
