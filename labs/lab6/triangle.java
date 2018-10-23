@@ -6,7 +6,7 @@ import sedgewick.StdDraw;
 
 public class triangle {
 	public static void ti(double x, double y, double size) {
-		if(size<0.05) {
+		if(size<0.01) {
 			return;
 		}
 		double[] a = new double[3];
