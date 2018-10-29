@@ -12,6 +12,6 @@ public class ThinkAboutList {
 	//After an exam, a teacher will grade the exam paper and he can use the List<Boolean>
 	//to record the outcome.
 	//4, 
-	//addition, subtraction, multiplication
+	//addition, subtraction, multiplication 
 	
 }
