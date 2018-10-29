@@ -38,7 +38,7 @@ public class Point {
 
 	@Override
 	public int hashCode() {
-		return 0; 
+		return 0; //seems workes 
 	//	return (int)(Math.random()*100000);
 	//	final int prime = 31;
 	//	int result = 1;
