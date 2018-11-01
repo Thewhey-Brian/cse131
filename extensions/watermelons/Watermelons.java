@@ -2,6 +2,8 @@ package watermelons;
 
 import java.util.Arrays;
 
+import lab5.Strings;
+
 public class Watermelons {
 	
 	/**
@@ -15,7 +17,14 @@ public class Watermelons {
 	 * @return an array containing the sums of pairs as described above
 	 */
 	public static int[] allPairSums(int[] nums) {
-		int[] ans = new int[] { 0 };  // FIXME compute ans as the result you want
+		int[] ans = new int[10];  // FIXME compute ans as the result you want
+		int k=0;
+		for(int i=0; i<nums.length; ++i) {
+			for(int j=i+1; j<nums.length; ++j) {
+				ans[k] = nums[i] + nums[j];
+				k++;
+			}
+		}
 		return ans;
 	}
 	
@@ -32,7 +41,24 @@ public class Watermelons {
 	 * @return
 	 */
 	public static int[] getSolution(int[] pairSums) {
-		return new int[] { 0 };
+		int[] check = new int[5]; 
+		int max = 0;
+		//return new int[] { 0 };
+		for(int i=0; i<pairSums[0]; ++i) {
+			if(pairSums[i]-max>0) {
+				max = pairSums[i];
+			}
+		}
+		while(!sameIntArrays(allPairSums(check), pairSums)) {
+			
+			
+				for(int k=0; k<5; k++) {
+					int n = (int) Math.random()*max;
+					check[k] = n;
+				}
+			
+		}
+		return check;
 	}
 	
 	/**
