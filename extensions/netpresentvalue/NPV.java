@@ -11,7 +11,7 @@ public class NPV {
 	 * @return the future value of the investment
 	 */
 	public static double futureValue(double dollars, int years, double r) {
-		return 0.0; // FIXME
+		return dollars * Math.pow((1+r), years); // FIXME
 	}
 
 	/**
@@ -24,7 +24,7 @@ public class NPV {
 	 * @return the present value of the future money
 	 */
 	public static double presentValue(double dollars, int years, double r) {
-		return 0.0; // FIXME
+		return dollars / Math.pow((1+r), years);// FIXME
 	}
 	
 	/**
@@ -36,8 +36,12 @@ public class NPV {
 	 * @param r the discount rate of money per year
 	 * @return the net present value after all payouts are made
 	 */
-	public static double netPresentValue(double investment, int years, double payout, double r) { 
-		return 0.0;
+	public static double netPresentValue(double investment, int years, double payout, double r) {
+		double ans = -investment;
+		for(int i=1; i<=years; ++i) {
+			ans = ans + presentValue(payout, i, r);
+		}
+		return ans;
 	}
 	
 }
