@@ -22,7 +22,7 @@ public class Methods {
 	}
 	
 	public static boolean isOdd(int n) {
-		if(n>0) {
+		if(n>0) { 
 			return !isOdd(n-1);
 		}
 		else {

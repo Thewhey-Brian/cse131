@@ -17,7 +17,8 @@ public class Watermelons {
 	 * @return an array containing the sums of pairs as described above
 	 */
 	public static int[] allPairSums(int[] nums) {
-		int[] ans = new int[10];  // FIXME compute ans as the result you want
+		int pairs = (nums.length*(nums.length-1))/2;
+		int[] ans = new int[pairs];  // FIXME compute ans as the result you want
 		int k=0;
 		for(int i=0; i<nums.length; ++i) {
 			for(int j=i+1; j<nums.length; ++j) {
@@ -41,7 +42,8 @@ public class Watermelons {
 	 * @return
 	 */
 	public static int[] getSolution(int[] pairSums) {
-		int[] check = new int[5]; 
+		int melons = (int) ((1+Math.sqrt(1+8*pairSums.length))/2);
+		int[] check = new int[melons]; 
 		int max = 0;
 		//return new int[] { 0 };
 		for(int i=0; i<pairSums[0]; ++i) {
@@ -50,13 +52,18 @@ public class Watermelons {
 			}
 		}
 		while(!sameIntArrays(allPairSums(check), pairSums)) {
-			
-			
-				for(int k=0; k<5; k++) {
-					int n = (int) Math.random()*max;
-					check[k] = n;
+				int triger = 1;
+				for(int k=0; k<melons; k++) {
+					int n = (int) Math.random()*(max-1);
+					for(int i=0; i<k; ++i) {
+						if(check[i]==n) {
+							triger = 0;
+						}
+					}
+					if(triger == 1) {
+						check[k] = n;
+					}
 				}
-			
 		}
 		return check;
 	}

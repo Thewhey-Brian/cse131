@@ -1,8 +1,11 @@
 package studio8;
 
+import java.util.LinkedList;
+
 public class main {
 
 	public static void main(String[] args) {
+		
 		Time t = new Time(12, 55, true);
 		Time t1 = new Time(1, 55, true);
 		Time t2 = new Time(2, 39, true);
@@ -14,6 +17,11 @@ public class main {
 		Date d2 = new Date(03, 22, 1998);
 		Date d3 = new Date(11, 19, 1998);
 		Date d4 = new Date(01, 27, 1998);
+		
+		LinkedList<Time> tlist = new LinkedList<Time>();
+		LinkedList<Date> dlist = new LinkedList<Date>();
+		
+		tlist.add(t);
 		
 		System.out.println(t);
 		System.out.println(d);
