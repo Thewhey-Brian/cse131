@@ -6,16 +6,6 @@ import lab5.Strings;
 import studio5x.MergeCombiner;
 
 public class MergeSort {
-	/**
-	 * The specification for this method is equivalent to
-	 * {@link MergeCombiner#createMergeCombinedArray(String[], String[])}
-	 * 
-	 * @param a
-	 *            a sorted array
-	 * @param b
-	 *            another sorted array
-	 * @return a new array which contains the contents of both a and b, sorted.
-	 */
 	private static String[] mergeCombine(String[] a, String[] b) {
 		// if you would prefer to use your implementation from the previous studio,
 		// then change the line below to read:
@@ -61,32 +51,6 @@ public class MergeSort {
 			return result;
 		}
 	}
-
-	/**
-	 * Creates a new array whose contents are a sorted in ascending lexicographical
-	 * order version of the subrange [min, maxExclusive) in the specified array.
-	 * 
-	 * The specified min must be greater than or equal to 0 and less than
-	 * maxExclusive. The specified maxExclusive must be less than or equal to the
-	 * array length and greater than min. If any of these constraints are not met,
-	 * the results are undefined.
-	 * 
-	 * For example, the array: { "H", "S", "C", "M", "I", "P" } with min: 1 and
-	 * maxExclusive: 3 would process the indices [1,3) (that is: 1 and 2) to return
-	 * a new array: { "C", "S" }.
-	 * 
-	 * This method must not mutate (that is: change the contents of) the specified
-	 * array, nor would it have any real reason to do so.
-	 * 
-	 * @param array
-	 *            an array
-	 * @param min
-	 *            the minimum index of the range (inclusive)
-	 * @param maxExclusive
-	 *            the maximum index of the range (exclusive)
-	 * @return a sorted array of the subrange of contents in the specified array
-	 *         from [min, maxExclusive).
-	 */
 	public static String[] createSortedArrayInRange(String[] array, int min, int maxExclusive) {
 		int i = 0;
 		int j = 0;
@@ -105,21 +69,6 @@ public class MergeSort {
 		}
 			
 	}
-
-	/**
-	 * Creates a new array whose contents are a sorted in ascending lexicographical
-	 * order version of the specified array.
-	 * 
-	 * For example, the array: { "H", "S", "C", "M", "I", "P" } would return a new
-	 * array: { "C", "H", "I", "M", "P", "S" }.
-	 * 
-	 * This method must not mutate (that is: change the contents of) the specified
-	 * array, nor would it have any real reason to do so.
-	 * 
-	 * @param array
-	 *            an array
-	 * @return a sorted copy of the array
-	 */
 	public static String[] createSortedArray(String[] array) {
 		// handle the 0 array length case here, so the recursive
 		// createSortedArrayInRange need not worry about it.

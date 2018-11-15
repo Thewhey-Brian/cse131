@@ -18,7 +18,6 @@ public class BinarySearch {
 		ans = (a+b)/2;
 		return ans;
 	}
-
 	/**
 	 * Searches the specified sorted array for the value specified by key. If the
 	 * array contains key, then it returns an index which holds the value, otherwise

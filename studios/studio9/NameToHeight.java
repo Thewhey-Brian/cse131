@@ -19,7 +19,16 @@ public class NameToHeight {
 	 */
 	public static void main(String[] args) {
 		ArgsProcessor ap = new ArgsProcessor(args);
-		
-		throw new NotYetImplementedException("delete this line of code and implement this method.");
+		Map<String, Integer> mapNameToHeight = new HashMap<String, Integer>();
+		mapNameToHeight.put("Bob", 182);
+		mapNameToHeight.put("Brian", 183);
+		mapNameToHeight.put("Cindy", 165);
+		mapNameToHeight.put("Mike", 192);
+		String name = ap.nextString("What is his/her name?");
+		while(name!=null&&name!="") {
+			System.out.println(name + "'s height is: " + mapNameToHeight.get(name));
+			name = ap.nextString("What is his/her name?");
+		}
+
 	}
 }

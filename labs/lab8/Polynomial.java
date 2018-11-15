@@ -4,6 +4,7 @@ package lab8;
  * @author Ron Cytron
  */
 public interface Polynomial {
+
 	/**
 	 * Return a new Polynomial that includes the supplied coefficient and degree
 	 * term. If the supplied term is of the same degree as an already existing Term

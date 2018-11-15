@@ -1,8 +1,6 @@
 package studio5;
 
 public class BonusMethods {
-
-	
 	public static int sumDownBy2(int n) {
 		int ans = 0;
 		if(n==0||n<0) {
@@ -22,7 +20,6 @@ public class BonusMethods {
 		}
 		return ans;
 	}
-	
 	public static double harmonicSum(int n) {
 		double ans = 0;
 		for (double i=1; i<=n; ++i) {
@@ -30,7 +27,6 @@ public class BonusMethods {
 		}
 		return ans;
 	}
-	
 	public static double geometricSum(int k) {
 		double ans = 0;
 		for(int i=0; i<=k; ++i) {
@@ -39,7 +35,6 @@ public class BonusMethods {
 		}
 		return ans;
 	}
-	
 	public static int multPos(int j, int k) {
 		int ans = 0;
 		for(int i=0; i<j; ++i) {

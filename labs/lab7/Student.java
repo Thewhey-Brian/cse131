@@ -13,7 +13,6 @@ public class Student {
 	 * @param id
 	 */
 	public Student(String firstName, String lastName, int id) {
-		super();
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.id = id;
@@ -183,9 +182,7 @@ public class Student {
 	public String toString() {
 		return  firstName + " " + lastName + id;
 	}
-	
-		
-	
+
 	
 
 }

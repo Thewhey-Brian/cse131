@@ -41,19 +41,6 @@ public class BumpingBalls {
 				}
 			}
 		}
-		//for(int k=0; k<n; ++k) {
-		//}
-		//for(int p = 0; p<n; ++p) {
-		//	a = x[p];
-		//	b = y[p];
-		//	StdDraw.setPenColor(Color.BLACK);
-		//	StdDraw.setPenRadius(0.01);
-		//	StdDraw.circle(a, b, 0.025);
-		//	StdDraw.setPenColor(Color.ORANGE);
-		//	StdDraw.setPenRadius(0.05);
-		//	StdDraw.point(a, b);
-		//	StdDraw.show(10);
-		//}
 		while(true) {
 			for(int k=0; k<n; ++k) {
 				if ((Math.abs(x[k]+vx[k]) >= 1.0)||(x[k]+vx[k]<=0)) {
