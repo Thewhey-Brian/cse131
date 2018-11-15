@@ -25,7 +25,7 @@ public class NameToHeight {
 		mapNameToHeight.put("Cindy", 165);
 		mapNameToHeight.put("Mike", 192);
 		String name = ap.nextString("What is his/her name?");
-		while(name!=null&&name!="") {
+		while(name!=null) {
 			System.out.println(name + "'s height is: " + mapNameToHeight.get(name));
 			name = ap.nextString("What is his/her name?");
 		}
