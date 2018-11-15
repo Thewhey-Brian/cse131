@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Map;
 
 import cse131.NotYetImplementedException;
+import lab5.Strings;
 
 public class WordCount {
 	/**
@@ -28,6 +29,36 @@ public class WordCount {
 	 *         associated with the number of occurrences of the word
 	 */
 	public static Map<String, Integer> countWords(List<String> words) {
-		throw new NotYetImplementedException("delete this line of code and implement this method.");
+		Map<String, Integer> count = new HashMap<String, Integer>();
+		
+		
+//		for(int i=0; i<words.size(); ++i) {
+//			if(Strings.equals(tar, words.get(i))) {
+//				num = num + 1;
+//			}
+//		}
+		while(words.size()!=0){
+			int num = 0;
+			int s = 0;
+			String tar = words.get(0);
+			for(int i=0; i<words.size(); ++i) {
+				if(Strings.equals(tar, words.get(i))) {
+					num = num + 1;
+				}
+			}
+			count.put(tar, num);
+			while(s<=words.size()) {
+				if(Strings.equals(tar, words.get(s))) {
+					words.remove(s);
+				}
+				else {
+					s++;
+				}
+			}
+		}
+		return count;
+
+
+		
 	}
 }
