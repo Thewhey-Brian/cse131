@@ -37,25 +37,35 @@ public class WordCount {
 //				num = num + 1;
 //			}
 //		}
-		while(words.size()!=0){
-			int num = 0;
-			int s = 0;
-			String tar = words.get(0);
-			for(int i=0; i<words.size(); ++i) {
-				if(Strings.equals(tar, words.get(i))) {
-					num = num + 1;
-				}
+//		while(words.size()!=0){
+//			int num = 0;
+//			int s = 0;
+//			String tar = words.get(0);
+//			for(int i=0; i<words.size(); ++i) {
+//				if(Strings.equals(tar, words.get(i))) {
+//					num = num + 1;
+//				}
+//			}
+//			count.put(tar, num);
+//			while(s<=words.size()) {
+//				if(Strings.equals(tar, words.get(s))) {
+//					words.remove(s);
+//				}
+//				else {
+//					s++;
+//				}
+//			}
+//		}
+		
+		for(int i = 0; i < words.size(); ++i) {
+			if(!count.containsKey(words.get(i))) {
+				count.put(words.get(i), 1);
 			}
-			count.put(tar, num);
-			while(s<=words.size()) {
-				if(Strings.equals(tar, words.get(s))) {
-					words.remove(s);
-				}
-				else {
-					s++;
-				}
+			else {
+				count.put(words.get(i), count.get(words.get(i))+1);
 			}
 		}
+		
 		return count;
 
 

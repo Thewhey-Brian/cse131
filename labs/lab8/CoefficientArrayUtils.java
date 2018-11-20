@@ -17,7 +17,7 @@ public class CoefficientArrayUtils {
 	 *         the specified degree
 	 */
 	public static int calculateArrayLengthRequiredFor(int degree) {
-		throw new NotYetImplementedException("delete this line of code and implement this method.");
+		return degree+1;
 	}
 
 	/**
@@ -44,7 +44,7 @@ public class CoefficientArrayUtils {
 	 *         the array length of the specified previous coefficients.
 	 */
 	public static int calculateArrayLengthRequiredFor(int degree, double[] prevCoefficients) {
-		throw new NotYetImplementedException("delete this line of code and implement this method.");
+		return Math.max(prevCoefficients.length, degree+1);
 	}
 
 	/**
@@ -71,6 +71,21 @@ public class CoefficientArrayUtils {
 	 *         result of adding coefficient*x^degree to the prevCoefficients array.
 	 */
 	public static double[] createNextCoefficients(double coefficient, int degree, double[] prevCoefficients) {
-		throw new NotYetImplementedException("delete this line of code and implement this method.");
+		if(degree<=prevCoefficients.length-1) {
+			prevCoefficients[degree] = prevCoefficients[degree] + coefficient;
+			return prevCoefficients;
+		}
+		else {
+			double[] cup = new double[degree];
+			for(int i=0; i<prevCoefficients.length; ++i) {
+				cup[i] = prevCoefficients[i];
+			}
+			cup[degree] = coefficient;
+			for(int i=0; i<degree-prevCoefficients.length+1; ++i) {
+				cup[prevCoefficients.length+i] = 0.0;
+			}
+			return cup;
+		}
+		
 	}
 }
