@@ -72,18 +72,22 @@ public class CoefficientArrayUtils {
 	 */
 	public static double[] createNextCoefficients(double coefficient, int degree, double[] prevCoefficients) {
 		if(degree<=prevCoefficients.length-1) {
-			prevCoefficients[degree] = prevCoefficients[degree] + coefficient;
-			return prevCoefficients;
+			double[] cup = new double[prevCoefficients.length];
+			for(int i=0; i<prevCoefficients.length; ++i) {
+				cup[i] = prevCoefficients[i];
+			}
+			cup[degree] += coefficient;
+			return cup;
 		}
 		else {
-			double[] cup = new double[degree];
+			double[] cup = new double[degree+1];
+			for(int i=0; i<cup.length; ++i) {
+				cup[i]=0;
+			}
 			for(int i=0; i<prevCoefficients.length; ++i) {
 				cup[i] = prevCoefficients[i];
 			}
 			cup[degree] = coefficient;
-			for(int i=0; i<degree-prevCoefficients.length+1; ++i) {
-				cup[prevCoefficients.length+i] = 0.0;
-			}
 			return cup;
 		}
 		

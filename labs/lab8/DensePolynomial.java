@@ -2,18 +2,41 @@ package lab8;
 
 import java.util.Arrays;
 
-public class DensePolynomial {
-	
+public class DensePolynomial implements Polynomial{
+
 	private final double[] c;
 
 	public DensePolynomial() {
-		double[] p = new double[1];
+		double[] p = { 0 };
 		this.c = p;
 	}
-	
-	private DensePolynomial(double[] c1) {
-		this.c = c1;
+
+	public DensePolynomial(double[] d) {
+		this.c = d;
 	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + Arrays.hashCode(c);
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		DensePolynomial other = (DensePolynomial) obj;
+		if (!Arrays.equals(c, other.c))
+			return false;
+		return true;
+	}
+
 	/**
 	 * Return a new Polynomial that includes the supplied coefficient and degree
 	 * term. If the supplied term is of the same degree as an already existing Term
@@ -27,21 +50,14 @@ public class DensePolynomial {
 	 * @param degree
 	 * @return new Polynomial as described above
 	 */
-	public DensePolynomial addTerm(double coefficient, int degree) {
-		int length = calculateArrayLengthRequiredFor(degree, this.c);
-		double[] cup = new double[length];
-		for(int i=0; i<c.length; ++i) {
-			cup[i] = c[i];
+	public Polynomial addTerm(double coefficient, int degree) {
+		if(coefficient == 0) {
+			Polynomial ans = new DensePolynomial(this.c);
+			return ans;
 		}
-		if(coefficient!=0) {
-			cup[degree] = cup[degree] + coefficient;
-		}
-		DensePolynomial ans = new DensePolynomial(cup);
-		return ans;
-	}
-	private int calculateArrayLengthRequiredFor(int degree, double[] c2) {
-		// TODO Auto-generated method stub
-		return Math.max(c2.length, degree+1);
+		double[] ansArray = CoefficientArrayUtils.createNextCoefficients(coefficient, degree, this.c);
+		Polynomial d = new DensePolynomial(ansArray);
+		return d;
 	}
 
 	/**
@@ -54,13 +70,14 @@ public class DensePolynomial {
 	 */
 	public int degree() {
 		int ans = 0;
-		for(int i=0; i<c.length; ++i) {
-			if(c[i]!=0) {
+		for (int i = 0; i < c.length; ++i) {
+			if (c[i] != 0) {
 				ans = i;
 			}
 		}
 		return ans;
 	}
+
 	/**
 	 * Returns the coefficient of the term at the specified degree. If no such term
 	 * exists in the Polynomial, 0.0 should be returned.
@@ -69,13 +86,13 @@ public class DensePolynomial {
 	 * @return coefficient of the degree of interest
 	 */
 	public double getCoefficientAtDegree(int degree) {
-		if(c[degree] == 0) {
+		if (degree > this.c.length-1) {
 			return 0.0;
-		}
-		else {
+		} else {
 			return c[degree];
 		}
 	}
+
 	/**
 	 * Evaluate this Polynomial at the specified value for x
 	 * 
@@ -84,13 +101,14 @@ public class DensePolynomial {
 	 */
 	public double evaluate(double x) {
 		double ans = 0;
-		for(int i=0; i<c.length; ++i) {
-			if(c[i]!=0) {
-				ans = ans + c[i]*Math.pow(x, i);
+		for (int i = 0; i < c.length; ++i) {
+			if (c[i] != 0) {
+				ans = ans + c[i] * Math.pow(x, i);
 			}
 		}
 		return ans;
 	}
+
 	/**
 	 * Returns a new Polynomial that is the derivative of this one. Be sure not to
 	 * modify this Polynomial.
@@ -98,21 +116,22 @@ public class DensePolynomial {
 	 * @return
 	 */
 	public DensePolynomial derivative() {
-		//DensePolynomial dev = new DensePolynomial(this.c);
+		// DensePolynomial dev = new DensePolynomial(this.c);
 		double[] cup = new double[c.length];
-		for(int i=0; i<c.length; ++i) {
+		for (int i = 0; i < c.length; ++i) {
 			cup[i] = c[i];
 		}
-		for(int i=0; i<c.length; ++i) {
-			cup[i] = cup[i]*i;
+		for (int i = 0; i < c.length; ++i) {
+			cup[i] = cup[i] * i;
 		}
-		for(int j=1; j<c.length; ++j) {
-			cup[j-1] = cup[j];
+		for (int j = 1; j < c.length; ++j) {
+			cup[j - 1] = cup[j];
 		}
-		cup[c.length-1] = 0;
+		cup[c.length - 1] = 0;
 		DensePolynomial dev = new DensePolynomial(cup);
 		return dev;
 	}
+
 	/**
 	 * Return a new Polynomial that is the sum of this one and the other one. Be
 	 * sure not to disturb this Polynomial.
@@ -120,38 +139,43 @@ public class DensePolynomial {
 	 * @param other another Polynomial
 	 * @return the sum of this and the other Polynomial
 	 */
-	public DensePolynomial sum(DensePolynomial other) {
-		double[] cup = new double[c.length];
-		for(int i=0; i<c.length; ++i) {
-			cup[i] = c[i];
-		}
-		for(int i=0; i<other.c.length; ++i) {
-			double coe = other.c[i];
-			cup= createNextCoefficients(coe, i, cup);
-		}
-		DensePolynomial sum = new DensePolynomial(cup);
-		return sum;
-	}
-	
-	private double[] createNextCoefficients(double coefficient, int degree, double[] prevCoefficients) {
-		// TODO Auto-generated method stub
-		if(degree<=prevCoefficients.length-1) {
-			prevCoefficients[degree] = prevCoefficients[degree] + coefficient;
-			return prevCoefficients;
+	public Polynomial sum(Polynomial other) {
+		if(other.degree()+1<1) {
+			return this;
 		}
 		else {
-			prevCoefficients[degree] = coefficient;
-			for(int i=0; i<degree-prevCoefficients.length+1; ++i) {
-				prevCoefficients[prevCoefficients.length+i] = 0.0;
+			double[] cup = new double[c.length];
+			for (int i = 0; i < c.length; ++i) {
+				cup[i] = c[i];
 			}
-			return prevCoefficients;
+			for (int i = 0; i < other.degree()+1; ++i) {
+				double coe = other.getCoefficientAtDegree(i);
+				cup = CoefficientArrayUtils.createNextCoefficients(coe, i, cup);
+			}
+			Polynomial sum = new DensePolynomial(cup);
+			return sum;
 		}
+		
 	}
 
 	@Override
 	public String toString() {
-		return "DensePolynomial [c=" + Arrays.toString(c) + "]";
+		String ans = "";
+		for(int i=c.length-1; i>0; i--) {
+			ans = ans + c[i] + "x^" + i;
+		}
+		ans = ans + c[0];
+		return  ans;
 	}
+
+	
+
+	
+	
+
+
+	
+
 
 
 }
