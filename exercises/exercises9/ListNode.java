@@ -27,6 +27,15 @@ public class ListNode<T> {
 			return ans;
 		}
 	}
+	
+	public static<T> int size2(ListNode<T> start) {
+		if(start==null) {
+			return 0;
+		}
+		else {
+			return 1 + size2(start.next);
+		}
+	}
 
 	
 	public static void main(String[] args) {
@@ -38,11 +47,11 @@ public class ListNode<T> {
 				+ " " + head.next.value
 				+ " " + head.next.next.value 
 				+ " " + head.next.next.next.value);
-//		System.out.println("From start " + size(head));
-//		System.out.println(" next " + size(head.next));
-//		System.out.println(" then " + size(head.next.next));
-//		System.out.println(" then " + size(head.next.next.next));
-//		System.out.println(" end " + size(head.next.next.next.next));
+		System.out.println("From start " + size2(head));
+		System.out.println(" next " + size2(head.next));
+		System.out.println(" then " + size2(head.next.next));
+		System.out.println(" then " + size2(head.next.next.next));
+		System.out.println(" end " + size2(head.next.next.next.next));
 //		System.out.println("From start " + sum(head));
 //		System.out.println(" next " + sum(head.next));
 //		System.out.println(" then " + sum(head.next.next));
