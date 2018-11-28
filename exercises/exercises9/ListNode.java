@@ -16,7 +16,16 @@ public class ListNode<T> {
 	//
 	public static<T> int size(ListNode<T> start) {
 		// NB  start could be null!
-		return 0; // FIXME
+		if(start==null) {
+			return 0;
+		}
+		else {
+			int ans = 0;
+			for(ListNode<T> p=start; p!=null; p=p.next) {
+			    ans = ans + 1;
+			}
+			return ans;
+		}
 	}
 
 	
