@@ -1,5 +1,7 @@
 package regression;
 
+import sedgewick.StdIn;
+
 public class LinearRegression {
 	/**
 	 * These are public class variables and are saved throughout the class
@@ -25,7 +27,7 @@ public class LinearRegression {
 	 * 	if you want to make it easier to work with.
 	 */
 	public static void learn() {
-		//FIXME: Write this method
+		StdIn.readDoubles("datafiles/housing/pricesarea.csv");
 	}
 	/**
 	 * You'll need to implement this as well. This method should return the predicted value

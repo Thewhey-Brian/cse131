@@ -1,22 +1,30 @@
 package conway;
 
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  * 
  *
  */
 public class Conway {
-
+	
+	private int rows;
+	private int cols;
+	private Map<String, Boolean> game = new HashMap<String, Boolean>();
 
 	public Conway(int rows, int cols){
+		this.rows = rows;
+		this.cols = cols;
 	}
 
 
 	public int getRows(){
-		return 0;             // FIXME
+		return this.rows;             // FIXME
 	}
 
 	public int getColumns(){
-		return 0;             // FIXME
+		return this.cols;             // FIXME
 	}
 
 	/**
@@ -26,7 +34,8 @@ public class Conway {
 	 * @param col
 	 */
 	public void setLiveness(boolean b, int row, int col){
-		// FIXME
+		String loc = Integer.toString(row) + ", " + Integer.toString(col);
+		game.put(loc, b);
 	}
 
 
@@ -38,7 +47,13 @@ public class Conway {
 	 *    If row or col is out of bounds, you must return false.
 	 */
 	public boolean isAlive(int row, int col){
-		return false;   // FIXME
+		String loc = Integer.toString(row) + ", " + Integer.toString(col);
+		if(!game.containsKey(loc)) {
+			return false;
+		}
+		else {
+			return game.get(loc);
+		}
 	}
 
 
@@ -46,7 +61,9 @@ public class Conway {
 	 * Make every cell not alive
 	 */
 	public void clear(){
-		// FIXME
+		for(String location: game.keySet()) {
+			game.put(location, false);
+		}
 	}
 
 
@@ -68,7 +85,57 @@ public class Conway {
 	 * @return the number of living neighbors
 	 */
 	public int countLivingNeighbors(int row, int col){
-		return 0;    // FIXME
+		int ans = 0;
+		// part 1
+		String loc1 = Integer.toString(row-1) + ", " + Integer.toString(col-1);
+		String loc2 = Integer.toString(row-1) + ", " + Integer.toString(col);
+		String loc3 = Integer.toString(row-1) + ", " + Integer.toString(col+1);
+		String loc4 = Integer.toString(row) + ", " + Integer.toString(col-1);
+		String loc5 = Integer.toString(row) + ", " + Integer.toString(col+1);
+		String loc6 = Integer.toString(row+1) + ", " + Integer.toString(col-1);
+		String loc7 = Integer.toString(row+1) + ", " + Integer.toString(col);
+		String loc8 = Integer.toString(row+1) + ", " + Integer.toString(col+1);
+		if(game.get(loc1)!=null) {
+			if(game.get(loc1)) {
+				ans = ans + 1;
+			}
+		}
+		if(game.get(loc2)!=null) {
+			if(game.get(loc2)) {
+				ans = ans + 1;
+			}
+		}
+		if(game.get(loc3)!=null) {
+			if(game.get(loc3)) {
+				ans = ans + 1;
+			}
+		}
+		if(game.get(loc4)!=null) {
+			if(game.get(loc4)) {
+				ans = ans + 1;
+			}
+		}
+		if(game.get(loc5)!=null) {
+			if(game.get(loc5)) {
+				ans = ans + 1;
+			}
+		}
+		if(game.get(loc6)!=null) {
+			if(game.get(loc6)) {
+				ans = ans + 1;
+			}
+		}
+		if(game.get(loc7)!=null) {
+			if(game.get(loc7)) {
+				ans = ans + 1;
+			}
+		}
+		if(game.get(loc8)!=null) {
+			if(game.get(loc8)) {
+				ans = ans + 1;
+			}
+		}
+		return ans;
 	}
 
 	/**
@@ -78,7 +145,29 @@ public class Conway {
 	 * 
 	 */
 	public void step(){
-		// FIXME
+		Conway c1 = new Conway(this.rows, this.cols);
+		for(String key : this.game.keySet()) {
+			c1.game.put(key, this.game.get(key));
+		}
+		for(String key : this.game.keySet()) {
+			//string to int
+			String[] lo = key.split(", ");
+			int row = Integer.valueOf(lo[0]);
+			int col = Integer.valueOf(lo[1]);
+			if(isAlive(row, col)) {
+				if(this.countLivingNeighbors(row, col)<2) {
+					c1.setLiveness(false, row, col);
+				}
+			}
+			else {
+				if(this.countLivingNeighbors(row, col)>=3) {
+					c1.setLiveness(true, row, col);
+				}
+			}
+		}
+		for(String key : this.game.keySet()) {
+			this.game.put(key, c1.game.get(key));
+		}	
 	}
 
 	/**
