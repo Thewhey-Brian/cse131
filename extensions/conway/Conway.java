@@ -145,7 +145,7 @@ public class Conway {
 	 * 
 	 */
 	public void step(){
-		Conway c1 = new Conway(this.rows, this.cols);
+		Conway c1 = new Conway(this.getRows(), this.getColumns());
 		for(String key : this.game.keySet()) {
 			c1.game.put(key, this.game.get(key));
 		}
@@ -277,6 +277,10 @@ public class Conway {
 
 
 	public void logAndCapture() {
+		clear();
+		for(String key : this.game.keySet()) {
+			
+		}
 
 	}
 

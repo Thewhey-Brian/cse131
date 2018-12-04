@@ -12,9 +12,14 @@ public class Matrix {
 	 * @param values
 	 */
 	public Matrix(double[][] in) {
-		values = null;  // FIXME -- make a copy of in
+		//values = null;  // FIXME -- make a copy of in
 		                //  this is not the same thing as writing:
 		                //  values = in
+		for(int i=0; i<in.length; ++i) {
+			for(int j=0; j<in[i].length; ++j) {
+					this.values[i][j] = in[i][j];
+			}
+		}
 	}
 	
 	public double getValue(int row, int col) {
@@ -41,8 +46,37 @@ public class Matrix {
 	 * @return true iff the arrays have the same shape and contents
 	 */
 	private static boolean arraysAreEqual(double[][] one, double[][] two) {
-		return false; // FIXME
+		boolean ans = true;
+		boolean pre = true;
+		int n=0;
+		while(one[n]!=null||two[n]!=null) {
+			if(one[n]!=null&&two[n]!=null) {
+				if(one[n].length!=two[n].length) {
+					pre = false;
+				}
+			}
+			else {
+				pre = false;
+			}
+			n++;
+		}
+		
+		if(pre) {
+			for(int i=0; i<one.length; ++i) {
+				for(int j=0; j<one.length; ++j) {
+					if(one[i][j]!=two[i][j]) {
+						ans = false;
+					}
+				}
+			}
+		}
+		else {
+			ans = false;
+		}
+		
+		return ans;
 	}
+	
 	
 	/**
 	 * This was generated initially by eclipse, but
@@ -67,7 +101,17 @@ public class Matrix {
 	}
 	
 	public Matrix plus(Matrix other) {
-		return null; // FIXME
+		if(arraysAreEqual(this.values, other.values)) {
+			for(int i=0; i<this.values.length; i++) {
+				for(int j=0; j<this.values[i].length; ++j) {
+					this.values[i][j] = this.values[i][j] + other.values[i][j];
+				}
+			}
+		}
+		else {
+			throw new IllegalArgumentException("The size of two matrix must be equal.");
+		}
+		return this;
 	}
 	
 	/**
@@ -77,7 +121,25 @@ public class Matrix {
 	 * @return
 	 */
 	public Matrix times(Matrix other) {
-		return null; // FIXME
+		if(this.values.length==other.values[0].length) {
+			double ans = 0;
+			for(int m=0; m<this.values[0].length; m++) {
+				for(int n=0; n<this.values.length; n++) {
+					//calculate [m][n]
+					for(int i=0; i<other.values[0].length; ++i) {
+						for(int j=0; j<this.values.length; ++j) {
+							ans = ans + other.values[m][i]*this.values[j][n];
+						}
+					}
+					this.values[m][n] = ans;
+				}
+			}
+			
+		}
+		else {
+			throw new IllegalArgumentException("The size of two matrix is illegal.");
+		}
+		return this;
 	}
 	
 	/**
@@ -86,7 +148,15 @@ public class Matrix {
 	 * @return
 	 */
 	public Matrix transpose() {
-		return null; // FIXME
+		double[][] trans = new double[this.values[0].length][this.values.length];
+		for(int i=0; i<this.values.length; ++i) {
+			for(int j=0; j<this.values[0].length; ++j){
+				trans[j][i] = this.values[i][j];
+			}
+		}
+		Matrix ans = new Matrix(trans);
+		return ans;
+		
 	}
 
 	/**
@@ -95,7 +165,9 @@ public class Matrix {
 	 * @param factor the amount by which to scale each element of row i
 	 */
 	public void scaleRow(int i, double factor) {
-		// FIXME
+		for(int t=0; t<values[i].length; ++t) {
+			values[i][t] = values[i][t] * factor;
+		}
 		
 	}
 
@@ -105,8 +177,11 @@ public class Matrix {
 	 * @param j
 	 */
 	public void addRows(int i, int j) {
-		// FIXME
-		
+		if(i==j) {
+			for(int t=0; t<values[i].length; ++t) {
+				values[j][t] = values[i][t] + values[j][t];
+			}
+		}
 	}
 	
 	/**
@@ -115,7 +190,14 @@ public class Matrix {
 	 * @param j
 	 */
 	public void exchangeRows(int i, int j){
-		// FIXME
+		if(i==j) {
+			for(int t=0; t<values[i].length; ++t) {
+				double ans = 0;
+				ans = values[i][t];
+				values[i][t] = values[j][t];
+				values[j][t] = ans;
+			}
+		}
 	}
 
 	/**
