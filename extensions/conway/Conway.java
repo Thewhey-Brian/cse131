@@ -325,6 +325,7 @@ public class Conway {
 			for(int col=0; col<this.cols; ++col) {
 				if(isAlive(row, col)) {
 					StdDraw.point(row, col);
+					System.out.println("setLiveness(true, row, col)");
 				}
 			}
 		}

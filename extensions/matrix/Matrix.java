@@ -114,29 +114,48 @@ public class Matrix {
 	 * @return
 	 */
 	public Matrix times(Matrix other) {
-	this.values = new double[other.values.length][this.values[0].length];
-		if(this.values.length==other.values[0].length) {
+//	//this.values = new double[other.values.length][this.values[0].length];
+//		double[][] c = new double[other.values.length][this.values[0].length];
+//		if(this.values.length==other.values[0].length) {
+//			double ans = 0;
+//			for(int m=0; m<other.values.length; m++) {
+//				for(int n=0; n<this.values[0].length; n++) {
+//					//calculate [m][n]
+//					for(int i=0; i<other.values[0].length; ++i) {
+//						for(int j=0; j<this.values.length; ++j) {
+//							ans = ans + other.values[m][i]*this.values[j][n];
+//						}
+//					}
+//				c[m][n] = ans;
+//				}
+//			}
+//	//		return this;
+//		}
+		double[][] c = new double[this.values.length][other.values[0].length];
+		if(other.values.length==this.values[0].length) {
 			double ans = 0;
-			for(int m=0; m<other.values.length; m++) {
-				for(int n=0; n<this.values[0].length; n++) {
+			for(int m=0; m<this.values.length; m++) {
+				for(int n=0; n<other.values[0].length; n++) {
 					//calculate [m][n]
-					for(int i=0; i<other.values[0].length; ++i) {
-						for(int j=0; j<this.values.length; ++j) {
-							ans = ans + other.values[m][i]*this.values[j][n];
-						}
+					ans = 0;
+					for(int i=0; i<this.values[0].length; ++i) {
+						//for(int j=0; j<other.values.length; ++j) {
+							ans = ans + this.values[m][i]*other.values[i][n];
+						//}
 					}
-				this.values[m][n] = ans;
+				c[m][n] = ans;
 				}
 			}
 	//		return this;
 		}
-		if(this.values.length!=other.values[0].length||other.values==null) {
+		else {
 			throw new IllegalArgumentException();
 		}
 	//	else {
 	//		throw new IllegalArgumentException();
 	//	}
-		return this;
+		Matrix ans = new Matrix(c);
+		return ans;
 	}
 	
 	/**
