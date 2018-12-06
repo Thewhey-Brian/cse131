@@ -35,7 +35,8 @@ public class SadCircle {
 			return circle;
 		}
 		long next = cal(n);
-		while(next!=n) {
+		//next!=n
+		while(!circle.contains(next)) {
 			circle.add(n);
 			if(next==1) {
 				circle = new HashSet<Long>();
