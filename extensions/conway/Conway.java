@@ -3,6 +3,8 @@ package conway;
 import java.util.HashMap;
 import java.util.Map;
 
+import sedgewick.StdDraw;
+
 /**
  * 
  *
@@ -11,6 +13,7 @@ public class Conway {
 	
 	private int rows;
 	private int cols;
+	private int[][] loc = new int[rows][cols];
 	private Map<String, Boolean> game = new HashMap<String, Boolean>();
 
 	public Conway(int rows, int cols){
@@ -147,27 +150,48 @@ public class Conway {
 	public void step(){
 		Conway c1 = new Conway(this.getRows(), this.getColumns());
 		for(String key : this.game.keySet()) {
-			c1.game.put(key, this.game.get(key));
+		c1.game.put(key, this.game.get(key));
 		}
-		for(String key : this.game.keySet()) {
-			//string to int
-			String[] lo = key.split(", ");
-			int row = Integer.valueOf(lo[0]);
-			int col = Integer.valueOf(lo[1]);
-			if(isAlive(row, col)) {
-				if(this.countLivingNeighbors(row, col)<2) {
-					c1.setLiveness(false, row, col);
+		
+		for(int row=0; row<c1.rows; ++row) {
+			for(int col=0; col<c1.cols; ++col) {
+				if(isAlive(row, col)) {
+					if(this.countLivingNeighbors(row, col)<2) {
+						c1.setLiveness(false, row, col);
+					}
+				}
+				else {
+					if(this.countLivingNeighbors(row, col)>=3) {
+						c1.setLiveness(true, row, col);
+					}
 				}
 			}
-			else {
-				if(this.countLivingNeighbors(row, col)>=3) {
-					c1.setLiveness(true, row, col);
-				}
+		}
+//
+//		for(String key : this.game.keySet()) {
+//			//string to int
+//			String[] lo = key.split(", ");
+//			int row = Integer.valueOf(lo[0]);
+//			int col = Integer.valueOf(lo[1]);
+//			if(isAlive(row, col)) {
+//				if(this.countLivingNeighbors(row, col)<2) {
+//					c1.setLiveness(false, row, col);
+//				}
+//			}
+//			else {
+//				if(this.countLivingNeighbors(row, col)>=3) {
+//					c1.setLiveness(true, row, col);
+//				}
+//			}
+//		}
+//		for(String key : this.game.keySet()) {
+//			this.game.put(key, c1.game.get(key));
+//		}	
+		for(int row=0; row<c1.rows; ++row) {
+			for(int col=0; col<c1.cols; ++col) {
+				this.setLiveness(c1.isAlive(row, col), row, col);
 			}
 		}
-		for(String key : this.game.keySet()) {
-			this.game.put(key, c1.game.get(key));
-		}	
 	}
 
 	/**
@@ -268,18 +292,41 @@ public class Conway {
 	}
 
 	public void yourDesignOne() {
-
+		this.setLiveness(true,2,5);
+		this.setLiveness(true,2,6);
+		this.setLiveness(true,2,7);
+		this.setLiveness(true,2,8);
+		this.setLiveness(true,2,9);
+		this.setLiveness(true,7,0);
+		this.setLiveness(true,7,1);
+		this.setLiveness(true,7,2);
+		this.setLiveness(true,7,3);
+		this.setLiveness(true,7,4);
+		
 	}
 
 	public void yourDesignTwo() {
-
+		this.setLiveness(true,2,4);
+		this.setLiveness(true,2,6);
+		this.setLiveness(true,2,8);
+		this.setLiveness(true,2,10);
+		this.setLiveness(true,2,12);
+		this.setLiveness(true,1,5);
+		this.setLiveness(true,1,7);
+		this.setLiveness(true,1,9);
+		this.setLiveness(true,1,11);
+		this.setLiveness(true,1,13);
 	}
 
 
 	public void logAndCapture() {
 		clear();
-		for(String key : this.game.keySet()) {
-			
+		for(int row=0; row<this.rows; ++row) {
+			for(int col=0; col<this.cols; ++col) {
+				if(isAlive(row, col)) {
+					StdDraw.point(row, col);
+				}
+			}
 		}
 
 	}
