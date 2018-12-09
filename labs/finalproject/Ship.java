@@ -35,16 +35,18 @@ public class Ship {
 			hits[i] = "o";
 		}
 		this.isHoriozntal = isHorizontal;
-		if(this.isHoriozntal) {
-			this.body = new String[this.topLeftX+this.length][this.topLeftY+1];
-			for(int i=this.topLeftX; i<this.topLeftX+this.length; ++i) {
-				body[i][this.topLeftY] = "*";
+		if(this.topLeftX>=0&&this.topLeftY>=0) {
+			if(this.isHoriozntal) {
+				this.body = new String[this.topLeftX+this.length][this.topLeftY+1];
+				for(int i=this.topLeftX; i<this.topLeftX+this.length; ++i) {
+					body[i][this.topLeftY] = "*";
+				}
 			}
-		}
-		else {
-			this.body = new String[this.topLeftX+1][this.topLeftY+this.length];
-			for(int i=this.topLeftY; i<this.topLeftY+this.length; ++i) {
-				body[this.topLeftX][i] = "*";
+			else {
+				this.body = new String[this.topLeftX+1][this.topLeftY+this.length];
+				for(int i=this.topLeftY; i<this.topLeftY+this.length; ++i) {
+					body[this.topLeftX][i] = "*";
+				}
 			}
 		}
 	}
