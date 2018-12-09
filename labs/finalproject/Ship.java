@@ -1,5 +1,7 @@
 package finalproject;
 
+import java.util.Arrays;
+
 import cse131.NotYetImplementedException;
 
 /**
@@ -7,6 +9,13 @@ import cse131.NotYetImplementedException;
  * @version 11/18/18
  */
 public class Ship {
+	
+	public int topLeftX;
+	public int topLeftY;
+	public int length;
+	public boolean isHoriozntal;
+	public String[][] body;
+	public String[] hits;
 	
 	/**
 	 * Create an instance of the ship class, recording all necessary information into
@@ -18,7 +27,26 @@ public class Ship {
 	 * @param isHorizontal if true, the ship is placed horizontally, else the ship is placed vertically
 	 */
 	public Ship(int topLeftX, int topLeftY, int length, boolean isHorizontal) {
-		throw new NotYetImplementedException("Delete this line and implement this method");
+		this.topLeftX = topLeftX;
+		this.topLeftY = topLeftY;
+		this.length = length;
+		this.hits = new String[this.length];
+		for(int i=0; i<this.length; ++i) {
+			hits[i] = "o";
+		}
+		this.isHoriozntal = isHorizontal;
+		if(this.isHoriozntal) {
+			this.body = new String[this.topLeftX+this.length][this.topLeftY+1];
+			for(int i=this.topLeftX; i<this.topLeftX+this.length; ++i) {
+				body[i][this.topLeftY] = "*";
+			}
+		}
+		else {
+			this.body = new String[this.topLeftX+1][this.topLeftY+this.length];
+			for(int i=this.topLeftY; i<this.topLeftY+this.length; ++i) {
+				body[this.topLeftX][i] = "*";
+			}
+		}
 	}
 	
 	/**
@@ -28,7 +56,16 @@ public class Ship {
 	 * @return true if the ship has been sunk
 	 */
 	public boolean isSunk() {
-		throw new NotYetImplementedException("Delete this line and implement this method");
+		int t = 0;
+			for(int i=0; i<this.length; ++i) {
+				if(this.hits[i]=="x") {
+					t++;
+				}
+			}
+			if(t==this.length) {
+				return true;
+			}
+				return false;
 	}
 	
 	/**
@@ -40,7 +77,69 @@ public class Ship {
 	 * @return true if this ship occupies that spot (hit), false otherwise (miss)
 	 */
 	public boolean isHit(int x, int y) {
-		throw new NotYetImplementedException("Delete this line and implement this method");
+		if(this.isHoriozntal) {
+			if(y==this.topLeftY&&x>=this.topLeftX&&x<this.topLeftX+this.length){
+				this.hits[x-this.topLeftX] = "x";
+				return true;
+			}
+			else {
+				return false;
+			}
+		}
+		else {
+			if(x==this.topLeftX&&y>=this.topLeftY&&y<this.topLeftY+this.length) {
+				this.hits[y-this.topLeftY] = "x";
+				return true;
+			}
+			else {
+				return false;
+			}
+		}
 	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + Arrays.deepHashCode(body);
+		result = prime * result + Arrays.hashCode(hits);
+		result = prime * result + (isHoriozntal ? 1231 : 1237);
+		result = prime * result + length;
+		result = prime * result + topLeftX;
+		result = prime * result + topLeftY;
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Ship other = (Ship) obj;
+		if (!Arrays.deepEquals(body, other.body))
+			return false;
+		if (!Arrays.equals(hits, other.hits))
+			return false;
+		if (isHoriozntal != other.isHoriozntal)
+			return false;
+		if (length != other.length)
+			return false;
+		if (topLeftX != other.topLeftX)
+			return false;
+		if (topLeftY != other.topLeftY)
+			return false;
+		return true;
+	}
+
+	@Override
+	public String toString() {
+		return "Ship [topLeftX=" + topLeftX + ", topLeftY=" + topLeftY + ", length=" + length + ", isHoriozntal="
+				+ isHoriozntal + ", body=" + Arrays.toString(body) + ", hits=" + Arrays.toString(hits) + "]";
+	}
+	
+	
 	
 }
