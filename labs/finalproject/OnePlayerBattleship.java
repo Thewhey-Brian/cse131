@@ -7,6 +7,11 @@ public class OnePlayerBattleship implements Battleship {
 
 	private ArgsProcessor ap;
 	private Player p1;
+	private int width;
+	private int height;
+	private boolean randomShips;
+	private int numShips;
+	private String playerName;
 	
 	/**
 	 * The main method that gets the starting parameters for a game,
@@ -41,16 +46,53 @@ public class OnePlayerBattleship implements Battleship {
 	 */
 	public OnePlayerBattleship(int width, int height, boolean randomShips, int numShips, String playerName, ArgsProcessor ap) {
 		p1 = new HumanPlayer(playerName, width, height, ap); // DON'T CHANGE THIS
+		this.width = width;
+		this.height = height;
+		this.randomShips = randomShips;
+		this.numShips = numShips;
+		this.playerName = playerName;
+		this.ap = ap;
 	}
 
 	@Override
-	public Player play() {
-		throw new NotYetImplementedException("Delete this line and implement this method");
+	public Player play(){
+		if(this.randomShips) {
+			for(int i=0; i<this.numShips; ++i) {
+				int length  = ap.nextInt("What is the length of this ship?");
+				p1.addRandomShip(length);
+			}
+		}
+		else {
+			for(int i=0; i<this.numShips; ++i) {
+				int length  = ap.nextInt("What is the length of this ship?");
+				p1.addShip(p1.decideShipPlacement(length));
+			}
+		}
+		while(p1.numShipsStillAfloat()>0) {
+			int[] loc = p1.getTargetLocation();
+			boolean isHit = p1.respondToFire(loc[0], loc[1]);
+			System.out.println(isHit);
+			p1.recordHitOrMiss(loc[0], loc[1], isHit);
+			p1.printRadar();
+		}
+		return p1;
 	}
 
 	@Override
 	public boolean turn(Player p) {
-		throw new NotYetImplementedException("Delete this line and implement this method");
+		int o = p1.numShipsStillAfloat();
+		while(p1.numShipsStillAfloat()>0) {
+			p.printRadar();
+			p.getTargetLocation();
+			boolean isHit = this.p1.respondToFire(p.getTargetLocation()[0], p.getTargetLocation()[1]);
+			p.recordHitOrMiss(p.getTargetLocation()[0], p.getTargetLocation()[1], isHit);
+			p.printRadar();
+			if(p1.numShipsStillAfloat()<o) {
+				System.out.println("You sunk my battleship!");
+				o--;
+			}
+		}
+		return true;
 	}
 	
 	/**

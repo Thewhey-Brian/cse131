@@ -80,8 +80,8 @@ public class HumanPlayer implements Player {
 
 	@Override
 	public void recordHitOrMiss(int x, int y, boolean isHit) {
-		getTargetLocation()[0] = x;
-		getTargetLocation()[1] = y; 
+//		getTargetLocation()[0] = x;
+//		getTargetLocation()[1] = y; 
 		if(isHit) {
 			this.radar[x][y] = "X";
 		}
@@ -280,8 +280,9 @@ public class HumanPlayer implements Player {
 	public void printRadar() {
 		for(int i=0; i<this.width; ++i) {
 			for(int j=0; j<this.height; ++j) {
-				System.out.println(this.radar[i][j]);
+				System.out.print(this.radar[j][i]);
 			}
+			System.out.println("\n");
 		}
 	}
 
