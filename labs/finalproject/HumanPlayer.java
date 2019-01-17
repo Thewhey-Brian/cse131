@@ -1,5 +1,6 @@
 package finalproject;
 
+import java.awt.Color;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -9,6 +10,7 @@ import java.util.Set;
 
 import cse131.ArgsProcessor;
 import cse131.NotYetImplementedException;
+import sedgewick.StdDraw;
 
 public class HumanPlayer implements Player {
 	
@@ -284,6 +286,21 @@ public class HumanPlayer implements Player {
 			}
 			System.out.println("\n");
 		}
+//		// visual
+//		StdDraw.setPenColor(Color.darkGray);
+//		StdDraw.filledSquare(0.5, 0.5, 0.5);
+//		for(int i=0; i<this.width; ++i) {
+//			for(int j=0; j<this.height; ++j) {
+//				StdDraw.setPenColor(Color.WHITE);
+//				StdDraw.setPenRadius(0.02);
+//				StdDraw.point((1/10)*(i+1)+0.02, (1/10)*(j+1)+0.02);
+//				if(this.radar[j][i]=="X") {
+//					StdDraw.setPenColor(Color.RED);
+//					StdDraw.point((1/this.width)*i, (1/this.height)*j);
+//				}
+//			}
+//			System.out.println("\n");
+//		}
 	}
 
 
