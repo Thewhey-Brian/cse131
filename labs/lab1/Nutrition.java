@@ -46,6 +46,7 @@ public class Nutrition {
 		System.out.println("This food is acceptable for low-fat diet?  "+b);
 		boolean c = Math.random()<0.5;
 		System.out.println("By coin flip, you should eat this food?  "+c);
+		System.out.println(-10%3);
 
 
 	}
